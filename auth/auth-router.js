@@ -43,11 +43,11 @@ router.post("/login", (req, res) => {
     });
 });
 
-// this functions creates and signs the token
+
 function signToken(user) {
   const payload = {
     email: user.email,
-    role: user.role, // this will come from the database users.role
+    role: user.role,
   };
 
   const secret = process.env.JWT_SECRET || "is it secret, is it safe?";
