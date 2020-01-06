@@ -3,24 +3,26 @@ const router = require("express").Router();
 const Users = require("./users-model.js");
 const restricted = require("../auth/restricted-middleware.js");
 
-router.get("/", restricted, checkRole("admin"), (req, res) => {
+function checkRole(req, res, next) {
+  if (req.token && req.token.role === "admin") {
+    next();
+  } else {
+    res
+      .status(403)
+      .json({ message: `Access denied, please login as Admin` });
+  }
+};
+
+router.get("/", restricted, checkRole, (req, res) => {
   Users.find()
     .then(users => {
       res.json(users);
     })
-    .catch(err => res.send(err));
+    .catch(err => {console.log(err)
+      res.send(err)
+    });
 });
 
-function checkRole(role) {
-  return function(req, res, next) {
-    if (req.token && role === req.token.role) {
-      next();
-    } else {
-      res
-        .status(403)
-        .json({ message: `Access denied, please login as ${role}` });
-    }
-  };
-}
+
 
 module.exports = router;
