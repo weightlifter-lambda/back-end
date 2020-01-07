@@ -32,13 +32,13 @@ router.post("/login", (req, res) => {
     
         res.status(200).json({
           token,
-          message: `Welcome ${user.first_name}!`,
+          message: `Name: ${user.first_name}, UserID:${user.id}`,
         });
       } else {
         res.status(401).json({ message: "Invalid Credentials" });
       }
     })
-    .catch(error => {
+    .catch(error => {console.log(error)
       res.status(500).json(error);
     });
 });
