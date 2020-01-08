@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
         // sign token
         const token = signToken(user);
 
-    
+
         res.status(200).json({
           token,
           message: `Welcome ${user.first_name}!`,
@@ -38,7 +38,8 @@ router.post("/login", (req, res) => {
         res.status(401).json({ message: "Invalid Credentials" });
       }
     })
-    .catch(error => {console.log(error)
+    .catch(error => {
+      console.log(error)
       res.status(500).json(error);
     });
 });
@@ -56,7 +57,7 @@ function signToken(user) {
     expiresIn: "1h",
   };
 
-  return jwt.sign(payload, secret, options); // notice the return
+  return jwt.sign(payload, secret, options);
 }
 
 module.exports = router;

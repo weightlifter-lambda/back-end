@@ -18,7 +18,8 @@ router.get("/", restricted, checkRole, (req, res) => {
     .then(users => {
       res.json(users);
     })
-    .catch(err => {console.log(err)
+    .catch(err => {
+      console.log(err)
       res.send(err)
     });
 });
