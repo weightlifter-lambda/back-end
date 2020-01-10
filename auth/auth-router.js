@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const Users = require("../users/users-model.js");
 
 // for endpoints beginning with /api/auth
@@ -59,5 +58,6 @@ function signToken(user) {
 
   return jwt.sign(payload, secret, options);
 }
+
 
 module.exports = router;
