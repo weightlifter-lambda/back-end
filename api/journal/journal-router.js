@@ -2,9 +2,6 @@ const express = require("express");
 const knex = require("../../database/dbConfig.js");
 const router = require("express").Router();
 
-// const Journal = require("./journal-model.js");
-// const restricted = require("../auth/restricted-middleware.js");
-
 
 router.get("/", (req, res) => {
     knex
