@@ -28,7 +28,7 @@
     "fsevents": "^2.1.2",
     "helmet": "^3.21.2",
     "jest": "^24.9.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.20.6",
     "node-gyp": "^6.1.0",
     "nodemon": "^2.0.2",
